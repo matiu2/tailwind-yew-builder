@@ -9,7 +9,7 @@
   },
   "keywords": [],
   "author": "Matthew Sherborne <msherborne@gmail.com>",
-  "license": "GPL3",
+  "license": "MIT",
   "dependencies": {
     "autoprefixer": "^10.2.4",
     "postcss": "^8.2.6",
