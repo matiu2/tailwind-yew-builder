@@ -7,9 +7,7 @@ services:
       - ./input:/work/input
       - ./output:/work/output
       - .:/work/source_code
-    environment:
-      - NODE_ENV=production
-    command: npx tailwindcss-cli@latest build /work/input/tailwind.css -c tailwind.config.prod.js -o /work/output/tailwind.css
+    command: npx tailwindcss-cli@latest build /work/input/tailwind.css -o /work/output/tailwind.css
 
   prod:
     build: .
@@ -17,8 +15,9 @@ services:
       - ./input:/work/input
       - ./output:/work/output
       - .:/work/source_code
-    command: npx tailwindcss-cli@latest build /work/input/tailwind.css -c tailwind.config.dev.js -o /work/output/tailwind.css
-
+    environment:
+      - NODE_ENV=production
+    command: /bin/sh prod.sh
 
 volumes:
   input:

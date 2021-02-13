@@ -1,7 +1,10 @@
 module.exports = {
-  purge: [
+  purge: {
+    enabled: process.env.NODE_ENV === 'production',
+    mode: 'all',
     // source_code represents the rust (yew?) source code root
-    "source_code/src/**/*.rs", "source_code/index.html"],
+    content: ["./source_code/src/**/*.rs", "./source_code/index.html"]
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
