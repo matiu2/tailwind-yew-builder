@@ -2,7 +2,7 @@ version: "3"
 
 services:
   dev:
-    build: .
+    image: matiu/tailwind-yew-builder
     volumes:
       - ./input:/work/input
       - ./output:/work/output
@@ -10,7 +10,7 @@ services:
     command: npx tailwindcss-cli@latest build /work/input/tailwind.css -o /work/output/tailwind.css
 
   prod:
-    build: .
+    image: matiu/tailwind-yew-builder
     volumes:
       - ./input:/work/input
       - ./output:/work/output
