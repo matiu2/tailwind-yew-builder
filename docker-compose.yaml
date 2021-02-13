@@ -3,18 +3,20 @@ version: "3"
 services:
   dev:
     build: .
+    env_file: .env
     volumes:
       - ./input:/work/input
       - ./output:/work/output
-      - .:/work/source_code
+      - ${SOURCE_CODE:-./source_code}:/work/source_code
     command: npx tailwindcss-cli@latest build /work/input/tailwind.css -o /work/output/tailwind.css
 
   prod:
     build: .
+    env_file: .env
     volumes:
       - ./input:/work/input
       - ./output:/work/output
-      - .:/work/source_code
+      - ${SOURCE_CODE:-./source_code}:/work/source_code
     environment:
       - NODE_ENV=production
     command: /bin/sh prod.sh
