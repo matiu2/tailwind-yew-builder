@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  dev:
+    build: .
+    volumes:
+      - ./input:/work/input
+      - ./output:/work/output
+      - .:/work/source_code
+    environment:
+      - NODE_ENV=production
+    command: npx tailwindcss-cli@latest build /work/input/tailwind.css -c tailwind.config.prod.js -o /work/output/tailwind.css
+
+  prod:
+    build: .
+    volumes:
+      - ./input:/work/input
+      - ./output:/work/output
+      - .:/work/source_code
+    command: npx tailwindcss-cli@latest build /work/input/tailwind.css -c tailwind.config.dev.js -o /work/output/tailwind.css
+
+
+volumes:
+  input:
+  output:
+  source_code:
