@@ -4,7 +4,7 @@ Released under the [MIT License](LICENSE.txt).
 
 Builds [Tailwind CSS](https://tailwindcss.com/) using docker, especially for [yew](https://github.com/yewstack/yew) or other [rust](https://www.rust-lang.org/) and [wasm](https://webassembly.org/) style buildouts.
 
-It expects your source files to be in $SOURCE_CODE/src/**/*.rs and $SOURCE_CODE/index.html
+It expects your source files to be in `$SOURCE_CODE/src/**/*.rs` and `$SOURCE_CODE/index.html`.
 
 # USAGE
 
