@@ -44,4 +44,4 @@ It'll search through your yew app root:
  * src/**/*.rs
  * index.html
 
-And regex all the files, looking for things that match tailwind.css's class names. Anything it doesn't find, will not make it into the tailwind.css file. Also, with prod builds, the tailwind.css file is minified/cleaned.
+..and regex all the files, looking for things that match tailwind.css's class names. Anything it doesn't find, will not make it into the tailwind.css file. Also, with prod builds, the tailwind.css file is minified/cleaned.
