@@ -18,9 +18,6 @@ ENV PATH=/downloads/node-v14.15.5-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/
 WORKDIR /
 RUN mkdir /work
 WORKDIR /work
-RUN npm set init.author.email "msherborne@gmail.com"
-RUN npm set init.author.name "Matthew Sherborne"
-RUN npm set init.license "GPL3"
 RUN npm set init.name "styles"
 RUN npm init --yes
 RUN ls
@@ -30,7 +27,6 @@ RUN npm install tailwindcss@latest postcss@latest autoprefixer@latest clean-css-
 ENV PATH=/work/node_modules/clean-css-cli/bin:/downloads/node-v14.15.5-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 COPY package.json .
 COPY postcss.config.js .
-COPY tailwind.config.js .
 COPY prod.sh .
 
 ## Where the input tailwind.css file can be found

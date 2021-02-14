@@ -7,7 +7,7 @@ services:
       - ./input:/work/input
       - ./output:/work/output
       - ${SOURCE_CODE:-../}:/work/source_code
-    command: npx tailwindcss-cli@latest build /work/input/tailwind.css -o /work/output/tailwind.css
+    command: npx tailwindcss-cli@latest build /work/input/tailwind.css -c /work/input/tailwind.config.js -o /work/output/tailwind.css
 
   prod:
     image: matiu/tailwind-yew-builder
