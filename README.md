@@ -37,6 +37,13 @@ It'll search through your yew app root:
 
 ..and regex all the files, looking for things that match tailwind.css's class names. Anything it doesn't find, will not make it into the tailwind.css file. Also, with prod builds, the tailwind.css file is minified/cleaned.
 
+## Production, but kind of still working on it
+
+ 1. `cd tailwind-yew-builder`
+ 2. `docker-compose up watch` It'll watch for file changes and re-run the prod script when they happen 
+
+--------
+
 # Using the output tailwind.css file
 
 If you're using [trunk](https://github.com/thedodd/trunk) to build your yew app (which you should be), just include in your index.html:
@@ -63,6 +70,8 @@ In `./input/` you'll see the tailwind configuration files:
 
  * `tailwind.css` - Configure that as shown [here](https://tailwindcss.com/docs/installation#using-a-custom-css-file)
  * `tailwind-config.js` - Configure that as shown [here](https://tailwindcss.com/docs/configuration)
+
+--------
 
 # Super advanced
 

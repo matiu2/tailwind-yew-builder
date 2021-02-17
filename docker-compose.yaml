@@ -7,7 +7,19 @@ services:
       - ./input:/work/input
       - ./output:/work/output
       - ${SOURCE_CODE:-../}:/work/source_code
-    command: npx tailwindcss-cli@latest build /work/input/tailwind.css -c /work/input/tailwind.config.js -o /work/output/tailwind.css
+    command: npx tailwindcss-cli@latest build /work/input/tailwind.css --minify --purge -c /work/input/tailwind.config.js -o /work/output/tailwind.css
+
+  watch:
+    image: matiu/tailwind-yew-builder
+    volumes:
+      - ./input:/work/input
+      - ./output:/work/output
+      - ${SOURCE_CODE:-../}:/work/source_code
+    tty: true            # docker run -t
+    stdin_open: true     # docker run -i
+    environment:
+      - NODE_ENV=production
+    command: npm run watch
 
   prod:
     image: matiu/tailwind-yew-builder

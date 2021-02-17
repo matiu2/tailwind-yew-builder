@@ -4,8 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "postcss output/tailwind.css -o public/build/tailwind.css",
-    "watch": "watch 'npm run build' source_code/src/**/*.rs source_code/index.html tailwind.config.js output/tailwind.css"
+    "build": "/bin/sh prod.sh",
+    "watch": "npm-watch"
+  },
+  "watch": {
+    "build": {
+      "patterns": [
+        "input", "source_code"
+      ],
+      "extensions": "css,js,rs,html"
+    }
   },
   "keywords": [],
   "author": "Matthew Sherborne <msherborne@gmail.com>",
@@ -13,6 +21,7 @@
   "dependencies": {
     "autoprefixer": "^10.2.4",
     "postcss": "^8.2.6",
-    "tailwindcss": "^2.0.3"
+    "tailwindcss": "^2.0.3",
+    "npm-watch": "0.7.0"
   }
 }
