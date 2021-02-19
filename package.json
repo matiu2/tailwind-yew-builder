@@ -4,16 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "/bin/sh prod.sh",
-    "watch": "npm-watch"
-  },
-  "watch": {
-    "build": {
-      "patterns": [
-        "input", "source_code"
-      ],
-      "extensions": "css,js,rs,html"
-    }
+    "build": "/bin/sh prod.sh"
   },
   "keywords": [],
   "author": "Matthew Sherborne <msherborne@gmail.com>",
@@ -21,7 +12,6 @@
   "dependencies": {
     "autoprefixer": "^10.2.4",
     "postcss": "^8.2.6",
-    "tailwindcss": "^2.0.3",
-    "npm-watch": "0.7.0"
+    "tailwindcss": "^2.0.3"
   }
 }

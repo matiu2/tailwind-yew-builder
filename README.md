@@ -42,6 +42,9 @@ It'll search through your yew app root:
  1. `cd tailwind-yew-builder`
  2. `docker-compose up watch` It'll watch for file changes and re-run the prod script when they happen 
 
+This uses the input/watch.sh script. If you want to watch a different set of
+files for changes, you can change this script.
+
 --------
 
 # Using the output tailwind.css file
@@ -70,6 +73,21 @@ In `./input/` you'll see the tailwind configuration files:
 
  * `tailwind.css` - Configure that as shown [here](https://tailwindcss.com/docs/installation#using-a-custom-css-file)
  * `tailwind-config.js` - Configure that as shown [here](https://tailwindcss.com/docs/configuration)
+
+If you want you can copy these files to your own source tree, and modify them
+as needed, then just use the `INPUT` environment varible to show docker-compose
+where to look.
+
+For example:
+
+    mkdir ../tailwind-css-config
+    cp input/* ../tailwind-css-config
+    # Make changes in ../tailwind-css-config as needed
+    # Now run docker compose
+    INPUT=../tailwind-css-config docker-compose up watch
+    # .. or with multiple environment variables:
+    INPUT=../tailwind-css-config SOURCE_CODE=../my_source docker-compose up watch
+
 
 --------
 

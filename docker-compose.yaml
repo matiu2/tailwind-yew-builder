@@ -4,28 +4,28 @@ services:
   dev:
     image: matiu/tailwind-yew-builder
     volumes:
-      - ./input:/work/input
-      - ./output:/work/output
+      - ${INPUT:-./input}:/work/input
+      - ${OUTPUT:-./output}:/work/output
       - ${SOURCE_CODE:-../}:/work/source_code
     command: npx tailwindcss-cli@latest build /work/input/tailwind.css --minify --purge -c /work/input/tailwind.config.js -o /work/output/tailwind.css
 
   watch:
     image: matiu/tailwind-yew-builder
     volumes:
-      - ./input:/work/input
-      - ./output:/work/output
+      - ${INPUT:-./input}:/work/input
+      - ${OUTPUT:-./output}:/work/output
       - ${SOURCE_CODE:-../}:/work/source_code
     tty: true            # docker run -t
     stdin_open: true     # docker run -i
     environment:
       - NODE_ENV=production
-    command: npm run watch
+    command: /bin/sh /work/input/watch.sh
 
   prod:
     image: matiu/tailwind-yew-builder
     volumes:
-      - ./input:/work/input
-      - ./output:/work/output
+      - ${INPUT:-./input}:/work/input
+      - ${OUTPUT:-./output}:/work/output
       - ${SOURCE_CODE:-../}:/work/source_code
     environment:
       - NODE_ENV=production
