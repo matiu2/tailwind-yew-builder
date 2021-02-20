@@ -10,6 +10,7 @@ services:
     command: npx tailwindcss-cli@latest build /work/input/tailwind.css --minify --purge -c /work/input/tailwind.config.js -o /work/output/tailwind.css
 
   watch:
+    build: .
     image: matiu/tailwind-yew-builder
     volumes:
       - ${INPUT:-./input}:/work/input
