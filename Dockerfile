@@ -24,14 +24,11 @@ RUN ls
 
 # Install tailwindcss
 RUN npm install -g npm@latest
-RUN npm install -g tailwindcss@latest tailwindcss-cli@latest postcss@latest autoprefixer@latest clean-css-cli@latest npm-run@latest
+RUN npm install -D tailwindcss postcss autoprefixer clean-css-cli npm-run @tailwindcss/typography
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/work/node_modules/clean-css-cli/bin:/downloads/node-v14.15.5-linux-x64/bin
 COPY package.json .
 COPY postcss.config.js .
 COPY prod.sh .
-
-## For some reason we have to run this to get it to install properly
-RUN npx tailwindcss-cli@latest
 
 ## Where the input tailwind.css file can be found
 VOLUME /work/input
