@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM --platform=linux/amd64 ubuntu
 
 # Ubuntu init
 RUN apt-get update
@@ -9,10 +9,11 @@ RUN apt-get autoremove -y
 # Install node js
 RUN mkdir /downloads
 WORKDIR /downloads
-RUN wget https://nodejs.org/dist/v14.15.5/node-v14.15.5-linux-x64.tar.xz
+ENV NODE_VERSION="v18.12.1"
+RUN wget https://nodejs.org/dist/v18.12.1/node-${NODE_VERSION}-linux-x64.tar.xz
 RUN ls -lt
-RUN tar -xf 'node-v14.15.5-linux-x64.tar.xz'
-ENV PATH=/downloads/node-v14.15.5-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+RUN tar -xf 'node-'${NODE_VERSION}'-linux-x64.tar.xz'
+ENV PATH=/downloads/node-${NODE_VERSION}-linux-x64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Create the npm package.json
 WORKDIR /
@@ -24,14 +25,11 @@ RUN ls
 
 # Install tailwindcss
 RUN npm install -g npm@latest
-RUN npm install -g tailwindcss@latest tailwindcss-cli@latest postcss@latest autoprefixer@latest clean-css-cli@latest npm-run@latest
-ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/work/node_modules/clean-css-cli/bin:/downloads/node-v14.15.5-linux-x64/bin
+RUN npm install -D tailwindcss postcss autoprefixer clean-css-cli npm-run @tailwindcss/typography
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/work/node_modules/clean-css-cli/bin:/downloads/node-${NODE_VERSION}-linux-x64/bin
 COPY package.json .
 COPY postcss.config.js .
 COPY prod.sh .
-
-## For some reason we have to run this to get it to install properly
-RUN npx tailwindcss-cli@latest
 
 ## Where the input tailwind.css file can be found
 VOLUME /work/input

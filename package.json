@@ -10,6 +10,7 @@
   "author": "Matthew Sherborne <msherborne@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.7",
     "autoprefixer": "^10.2.4",
     "postcss": "^8.2.6",
     "tailwindcss": "^2.0.3"
